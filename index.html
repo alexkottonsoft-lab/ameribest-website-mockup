@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ameribest Heating & Air Conditioning, LLC | HVAC Services</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Theme Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0B1D3A',
+                            900: '#061021',
+                        },
+                        crimson: {
+                            600: '#C8102E',
+                            700: '#A00D24',
+                        },
+                        gold: {
+                            400: '#FFD700',
+                            500: '#E6C200',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(rgba(200, 16, 46, 0.1) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Top Emergency Bar -->
+    <div class="bg-crimson-600 text-white text-xs md:text-sm font-semibold py-2 px-4 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="inline-block w-2.5 h-2.5 bg-yellow-300 rounded-full animate-ping"></span>
+                <span>24/7 Emergency Service Available Across Texas</span>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="tel:18005550199" class="hover:underline flex items-center space-x-1">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>(800) 555-0199</span>
+                </a>
+                <span class="hidden md:inline text-slate-300">|</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-clock mr-1"></i> Mon - Sun: Open 24 Hours</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="bg-navy-900 text-white sticky top-9 z-40 shadow-xl border-b border-navy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                
+                <!-- TOP LEFT LOGO CONTAINER -->
+                <a href="#home" onclick="showPage('home')" class="flex items-center space-x-3 py-2">
+                    <img src="image_73c643.jpg" alt="Ameribest Heating & Air Conditioning, LLC Logo" class="h-16 md:h-20 w-auto object-contain bg-white p-1 rounded shadow-sm hover:scale-105 transition-transform duration-200">
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-8 font-medium">
+                    <a href="#home" onclick="showPage('home')" class="hover:text-gold-400 transition-colors py-2">Home</a>
+                    <a href="#services" onclick="showPage('home')" class="hover:text-gold-400 transition-colors py-2">Services</a>
+                    <button onclick="showPage('about')" class="hover:text-gold-400 transition-colors py-2">About Us</button>
+                    <button onclick="showPage('maintenance')" class="hover:text-gold-400 transition-colors py-2">Maintenance Club</button>
+                    <button onclick="showPage('financing')" class="hover:text-gold-400 transition-colors py-2">Financing</button>
+                    <a href="#contact" onclick="showPage('home')" class="hover:text-gold-400 transition-colors py-2">Contact</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button onclick="openBookingModal()" class="bg-crimson-600 hover:bg-crimson-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-red-900/30 transition-all flex items-center space-x-2">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <span>Book Online</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-slate-300 hover:text-white text-2xl focus:outline-none">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-navy-800 border-t border-slate-700 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" onclick="showPage('home'); toggleMobileMenu()" class="block text-slate-200 hover:text-gold-400 py-2">Home</a>
+            <a href="#services" onclick="showPage('home'); toggleMobileMenu()" class="block text-slate-200 hover:text-gold-400 py-2">Services</a>
+            <button onclick="showPage('about'); toggleMobileMenu()" class="block text-left w-full text-slate-200 hover:text-gold-400 py-2">About Us</button>
+            <button onclick="showPage('maintenance'); toggleMobileMenu()" class="block text-left w-full text-slate-200 hover:text-gold-400 py-2">Maintenance Club</button>
+            <button onclick="showPage('financing'); toggleMobileMenu()" class="block text-left w-full text-slate-200 hover:text-gold-400 py-2">Financing</button>
+            <a href="#contact" onclick="showPage('home'); toggleMobileMenu()" class="block text-slate-200 hover:text-gold-400 py-2">Contact</a>
+            <button onclick="openBookingModal(); toggleMobileMenu()" class="w-full bg-crimson-600 hover:bg-crimson-700 text-white font-bold py-3 rounded-lg shadow mt-2">
+                Book Service Now
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN PAGE CONTENT (HOMEPAGE) -->
+    <div id="page-home" class="page-view">
+        
+        <!-- Hero Section -->
+        <section id="home" class="relative bg-navy-900 text-white overflow-hidden py-16 lg:py-24">
+            <div class="absolute inset-0 opacity-20 bg-pattern"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center space-x-2 bg-navy-800 border border-slate-700 px-3 py-1.5 rounded-full text-gold-400 text-sm font-semibold">
+                            <i class="fa-solid fa-star"></i>
+                            <span>Texas' Premier HVAC Specialists</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                            Reliable Comfort <br>
+                            <span class="text-crimson-600">When You Need It Most</span>
+                        </h1>
+                        <p class="text-slate-300 text-lg max-w-2xl">
+                            Ameribest Heating & Air Conditioning, LLC provides top-tier residential and commercial heating, cooling, and indoor air quality solutions backed by American quality craftsmanship.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button onclick="openBookingModal()" class="bg-crimson-600 hover:bg-crimson-700 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-xl transition-all flex items-center justify-center space-x-3">
+                                <span>Schedule Service Now</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                            <a href="tel:18005550199" class="bg-navy-800 hover:bg-navy-800/80 border border-slate-700 text-white font-semibold text-lg px-8 py-4 rounded-xl transition-all flex items-center justify-center space-x-3">
+                                <i class="fa-solid fa-phone-volume text-crimson-600"></i>
+                                <span>Emergency Call</span>
+                            </a>
+                        </div>
+
+                        <!-- Trust Badges -->
+                        <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-800 text-center sm:text-left">
+                            <div>
+                                <div class="text-2xl font-bold text-gold-400">100%</div>
+                                <div class="text-xs text-slate-400">Satisfaction Guaranteed</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gold-400">24/7</div>
+                                <div class="text-xs text-slate-400">Emergency Dispatch</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-gold-400">Licensed</div>
+                                <div class="text-xs text-slate-400">Fully Insured & Bonded</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Quote Card -->
+                    <div class="lg:col-span-5">
+                        <div class="bg-white text-slate-800 rounded-2xl shadow-2xl p-6 sm:p-8 border border-slate-100">
+                            <div class="text-center mb-6">
+                                <h3 class="text-2xl font-bold text-navy-900">Request Instant Estimate</h3>
+                                <p class="text-slate-500 text-sm">Fast & free HVAC estimates tailored to your home</p>
+                            </div>
+
+                            <form onsubmit="handleQuoteSubmit(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Name</label>
+                                    <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-navy-900 focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number</label>
+                                    <input type="tel" required placeholder="(555) 000-0000" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-navy-900 focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Service Needed</label>
+                                    <select class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-navy-900 focus:outline-none bg-white">
+                                        <option>AC Repair / Maintenance</option>
+                                        <option>Heating & Furnace System</option>
+                                        <option>Complete Unit Replacement</option>
+                                        <option>Indoor Air Quality / Ductwork</option>
+                                        <option>Emergency Service Request</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="w-full bg-crimson-600 hover:bg-crimson-700 text-white font-bold py-3.5 rounded-lg shadow-lg transition-all text-center">
+                                    Get Free Estimate
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mb-4">Our Comprehensive Services</h2>
+                    <p class="text-slate-600 text-lg">From routine tune-ups to emergency system overhauls, our certified technicians keep your climate controlled year-round.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- AC Repair & Maintenance -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 hover:shadow-xl transition-shadow">
+                        <div class="bg-navy-900 p-6 text-white text-center">
+                            <i class="fa-solid fa-snowflake text-4xl text-blue-400 mb-3"></i>
+                            <h3 class="text-xl font-bold">Air Conditioning</h3>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <p class="text-slate-600 text-sm">Full-service cooling solutions including rapid diagnostics, freon leak detection, compressor repairs, and seasonal tune-ups.</p>
+                            <ul class="space-y-2 text-sm text-slate-700">
+                                <li><i class="fa-solid fa-check text-crimson-600 mr-2"></i>24/7 Emergency AC Repairs</li>
+                                <li><i class="fa-solid fa-check text-crimson-600 mr-2"></i>Energy-Efficient Upgrades</li>
+                                <li><i class="fa-solid fa-check text-crimson-600 mr-2"></i>Ductless Mini-Splits</li>
+                            </ul>
+                            <button onclick="openBookingModal()" class="w-full text-center bg-slate-100 hover:bg-navy-900 hover:text-white font-semibold py-2.5 rounded-lg transition-colors border border-slate-300">
+                                Book AC Service
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Heating & Furnaces -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 hover:shadow-xl transition-shadow">
+                        <div class="bg-navy-900 p-6 text-white text-center">
+                            <i class="fa-solid fa-fire text-4xl text-crimson-600 mb-3"></i>
+                            <h3 class="text-xl font-bold">Heating Systems</h3>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <p class="text-slate-600 text-sm">Complete furnace installation, heat pump maintenance, heat exchanger inspections, and thermostat calibrations.</p>
+                            <ul class="space-y-2 text-sm text-slate-700">
+                                <li><i class="fa-solid fa-check text-crimson-600 mr-2"></i>Gas & Electric Furnaces</li>
+                                <li><i class="fa-solid fa-check text-crimson-600 mr-2"></i>Heat Pump Installation</li>
+                                <li><i class="fa-solid fa-check text-crimson-600 mr-2"></i>Safety Inspections</li>
+                            </ul>
+                            <button onclick="openBookingModal()" class="w-full text-center bg-slate-100 hover:bg-navy-900 hover:text-white font-semibold py-2.5 rounded-lg transition-colors border border-slate-300">
+                                Book Heating Service
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Indoor Air Quality -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 hover:shadow-xl transition-shadow">
+                        <div class="bg-navy-900 p-6 text-white text-center">
+                            <i class="fa-solid fa-wind text-4xl text-gold-400 mb-3"></i>
+                            <h3 class="text-xl font-bold">Indoor Air Quality</h3>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <p class="text-slate-600 text-sm">Breathe clean air with high-grade HEPA filtration systems, UV air purifiers, duct cleaning, and humidity control systems.</p>
+                            <ul class="space-y-2 text-sm text-slate-700">
+                                <li><i class="fa-solid fa-check text-crimson-600 mr-2"></i>Air Purification Systems</li>
+                                <li><i class="fa-solid fa-check text-crimson-600 mr-2"></i>Ductwork Cleaning & Sealing</li>
+                                <li><i class="fa-solid fa-check text-crimson-600 mr-2"></i>Whole-House Humidifiers</li>
+                            </ul>
+                            <button onclick="openBookingModal()" class="w-full text-center bg-slate-100 hover:bg-navy-900 hover:text-white font-semibold py-2.5 rounded-lg transition-colors border border-slate-300">
+                                Improve Air Quality
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mb-6">Why Homeowners Trust Ameribest Heating & Air Conditioning</h2>
+                        <p class="text-slate-600 mb-8 leading-relaxed">
+                            Inspired by high standards of quality and service excellence, Ameribest delivers prompt, transparent, and long-lasting HVAC solutions. We pride ourselves on clear pricing with zero hidden fees.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-crimson-600/10 p-3 rounded-lg text-crimson-600">
+                                    <i class="fa-solid fa-shield-halved text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-navy-900">Upfront Honest Pricing</h4>
+                                    <p class="text-slate-600 text-sm">No surprise hourly costs. You approve the quote before any work begins.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-crimson-600/10 p-3 rounded-lg text-crimson-600">
+                                    <i class="fa-solid fa-user-gear text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-navy-900">Certified Tech Experts</h4>
+                                    <p class="text-slate-600 text-sm">Background-checked, drug-tested, and continuously trained technicians.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-crimson-600/10 p-3 rounded-lg text-crimson-600">
+                                    <i class="fa-solid fa-headset text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-navy-900">24/7 Rapid Response</h4>
+                                    <p class="text-slate-600 text-sm">HVAC emergencies don't wait for business hours, and neither do we.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Highlight Graphic Card -->
+                    <div class="bg-navy-900 text-white rounded-2xl p-8 relative overflow-hidden shadow-2xl flex flex-col items-center justify-center text-center">
+                        <img src="image_73c643.jpg" alt="Ameribest Logo" class="h-28 w-auto mb-6 bg-white p-2 rounded shadow">
+                        <h3 class="text-2xl font-bold mb-2">The Ameribest Commitment</h3>
+                        <p class="text-slate-300 mb-6 text-sm max-w-md">"Delivering top-grade HVAC comfort with American pride, integrity, and uncompromising workmanship."</p>
+                        <div class="bg-crimson-600 text-white font-bold py-3 px-8 rounded-full shadow-lg">
+                            Call Direct: (800) 555-0199
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Location Section -->
+        <section id="contact" class="py-20 bg-slate-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <div>
+                        <h2 class="text-3xl font-extrabold mb-6">Contact Ameribest</h2>
+                        <p class="text-slate-400 mb-8">Have a question or need emergency dispatch? Reach out to our customer care team anytime.</p>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <i class="fa-solid fa-location-dot text-crimson-600 text-xl w-6"></i>
+                                <span>Statewide Coverage across Texas</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <i class="fa-solid fa-phone text-crimson-600 text-xl w-6"></i>
+                                <span>(800) 555-0199</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <i class="fa-solid fa-envelope text-crimson-600 text-xl w-6"></i>
+                                <span>support@ameribesthvac.com</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700">
+                        <h3 class="text-xl font-bold mb-4">Send Us a Direct Message</h3>
+                        <form onsubmit="handleQuoteSubmit(event)" class="space-y-4">
+                            <input type="text" placeholder="Your Name" required class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-crimson-600">
+                            <input type="email" placeholder="Your Email Address" required class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-crimson-600">
+                            <textarea rows="4" placeholder="How can we assist you?" required class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-crimson-600"></textarea>
+                            <button type="submit" class="w-full bg-crimson-600 hover:bg-crimson-700 font-bold py-3.5 rounded-lg shadow-lg transition-all">Send Message</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- INNER PAGE: ABOUT US -->
+    <div id="page-about" class="page-view hidden py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <button onclick="showPage('home')" class="mb-6 text-crimson-600 font-bold flex items-center space-x-2">
+                <i class="fa-solid fa-arrow-left"></i><span>Back to Home</span>
+            </button>
+            <h1 class="text-4xl font-extrabold text-navy-900 mb-6">About Ameribest Heating & Air Conditioning, LLC</h1>
+            <p class="text-lg text-slate-700 leading-relaxed mb-6">
+                Ameribest Heating & Air Conditioning, LLC was built on the core values of honesty, precision engineering, and dedicated service to our Texas community.
+            </p>
+            <p class="text-slate-600 leading-relaxed mb-6">
+                Taking cues from established leaders like Robaire Company, our approach centers around customer satisfaction, transparent flat-rate estimates, and providing energy-efficient systems that lower utility costs.
+            </p>
+        </div>
+    </div>
+
+    <!-- INNER PAGE: MAINTENANCE CLUB -->
+    <div id="page-maintenance" class="page-view hidden py-16 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <button onclick="showPage('home')" class="mb-6 text-crimson-600 font-bold flex items-center space-x-2">
+                <i class="fa-solid fa-arrow-left"></i><span>Back to Home</span>
+            </button>
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-extrabold text-navy-900 mb-4">Ameribest Comfort Club</h1>
+                <p class="text-slate-600">Preventative maintenance plans that extend system life and preserve peak efficiency.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-8 rounded-2xl shadow border border-slate-200">
+                    <h3 class="text-2xl font-bold text-navy-900 mb-2">Standard Maintenance Plan</h3>
+                    <p class="text-3xl font-extrabold text-crimson-600 mb-6">$14.99 <span class="text-sm font-normal text-slate-500">/ month</span></p>
+                    <ul class="space-y-3 text-slate-700 mb-8">
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> 2 Tune-Ups Per Year</li>
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> 10% Off All Repairs</li>
+                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Priority Scheduling</li>
+                    </ul>
+                    <button onclick="openBookingModal()" class="w-full bg-navy-900 text-white font-bold py-3 rounded-lg hover:bg-navy-800">Enroll Now</button>
+                </div>
+
+                <div class="bg-navy-900 text-white p-8 rounded-2xl shadow-xl relative border-2 border-gold-400">
+                    <div class="absolute -top-3 right-6 bg-gold-400 text-navy-900 font-bold text-xs uppercase px-3 py-1 rounded-full">Most Popular</div>
+                    <h3 class="text-2xl font-bold mb-2">Gold Shield Plan</h3>
+                    <p class="text-3xl font-extrabold text-gold-400 mb-6">$24.99 <span class="text-sm font-normal text-slate-300">/ month</span></p>
+                    <ul class="space-y-3 text-slate-200 mb-8">
+                        <li><i class="fa-solid fa-check text-gold-400 mr-2"></i> 2 Tune-Ups Per Year</li>
+                        <li><i class="fa-solid fa-check text-gold-400 mr-2"></i> 20% Off All Repairs</li>
+                        <li><i class="fa-solid fa-check text-gold-400 mr-2"></i> VIP Emergency Dispatch</li>
+                        <li><i class="fa-solid fa-check text-gold-400 mr-2"></i> $0 Service Call Diagnostic Fee</li>
+                    </ul>
+                    <button onclick="openBookingModal()" class="w-full bg-crimson-600 text-white font-bold py-3 rounded-lg hover:bg-crimson-700 shadow-lg">Enroll Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INNER PAGE: FINANCING -->
+    <div id="page-financing" class="page-view hidden py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <button onclick="showPage('home')" class="mb-6 text-crimson-600 font-bold flex items-center space-x-2">
+                <i class="fa-solid fa-arrow-left"></i><span>Back to Home</span>
+            </button>
+            <h1 class="text-4xl font-extrabold text-navy-900 mb-6">Flexible HVAC Financing Options</h1>
+            <p class="text-slate-600 mb-8">Don't let unexpected replacement costs strain your budget. We offer low monthly payment plans with 0% APR options available for qualified customers.</p>
+            <div class="bg-slate-100 p-8 rounded-2xl border border-slate-300 text-center">
+                <h3 class="text-2xl font-bold text-navy-900 mb-4">Get Pre-Approved In Minutes</h3>
+                <p class="text-slate-600 mb-6">No impact on your credit score to check pre-approval eligibility.</p>
+                <button onclick="openBookingModal()" class="bg-crimson-600 hover:bg-crimson-700 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-lg">Apply For Financing</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-900 text-slate-400 border-t border-slate-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-4">
+                <img src="image_73c643.jpg" alt="Ameribest Logo" class="h-14 w-auto bg-white p-1 rounded">
+                <p class="text-xs leading-relaxed">Ameribest Heating & Air Conditioning, LLC delivers trusted residential and commercial HVAC services across Texas.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><button onclick="showPage('home')" class="hover:text-white">Home</button></li>
+                    <li><button onclick="showPage('about')" class="hover:text-white">About Us</button></li>
+                    <li><button onclick="showPage('maintenance')" class="hover:text-white">Maintenance Club</button></li>
+                    <li><button onclick="showPage('financing')" class="hover:text-white">Financing Options</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Our Services</h4>
+                <ul class="space-y-2 text-sm">
+                    <li>AC Repair & Tune-Up</li>
+                    <li>Heating & Furnace Replacement</li>
+                    <li>Indoor Air Quality</li>
+                    <li>Duct Cleaning & Sealing</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Contact Info</h4>
+                <p class="text-sm">Phone: (800) 555-0199</p>
+                <p class="text-sm">Email: support@ameribesthvac.com</p>
+                <p class="text-sm mt-2">Hours: 24 Hours / 7 Days</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs pt-8 mt-8 border-t border-slate-800">
+            &copy; 2026 Ameribest Heating & Air Conditioning, LLC. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- BOOKING MODAL WIZARD -->
+    <div id="bookingModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
+            <h3 class="text-2xl font-bold text-navy-900 mb-2">Schedule Service Appointment</h3>
+            <p class="text-slate-500 text-sm mb-6">Select your service details and preferred time.</p>
+            <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Name</label>
+                    <input type="text" required class="w-full px-4 py-2.5 border border-slate-300 rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number</label>
+                    <input type="tel" required class="w-full px-4 py-2.5 border border-slate-300 rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Preferred Date</label>
+                    <input type="date" required class="w-full px-4 py-2.5 border border-slate-300 rounded-lg">
+                </div>
+                <button type="submit" class="w-full bg-crimson-600 hover:bg-crimson-700 text-white font-bold py-3 rounded-lg shadow">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openBookingModal() {
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function handleQuoteSubmit(e) {
+            e.preventDefault();
+            alert("Thank you for contacting Ameribest Heating & Air Conditioning! Our dispatch team will call you shortly.");
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            alert("Your booking request has been submitted successfully! An Ameribest representative will confirm your time slot.");
+            closeBookingModal();
+        }
+    </script>
+</body>
+</html>
